@@ -157,29 +157,6 @@ pollutantmean("specdata", "sulfate", 34)
 pollutantmean("specdata", "nitrate")
 
 
-# version 2
-### from https://github.com/cynthia0611/Coursera-R-Programming/blob/master/Week-2/pollutantmean.R ###
-pollutantmean2 <- function(directory, pollutant, id = 1:332) {
-        if(grep("specdata", directory) == 1) {
-                directory <- ("./specdata/")
-        }
-        
-        mean_vector <- c()
-        
-        all_files <- as.character( list.files(directory) )
-        file_paths <- paste(directory, all_files, sep="")
-        
-        for (i in id) {
-                current_file <- read.csv(file_paths[i], header=T, sep=",")
-                na_removed <- current_file[!is.na(current_file[, pollutant]), pollutant]
-                mean_vector <- c(mean_vector, na_removed)
-                }
-        
-        result <- mean(mean_vector)
-        return(result)
-}
-### from https://github.com/cynthia0611/Coursera-R-Programming/blob/master/Week-2/pollutantmean.R ###
-
 
 ######################################################################################### 
 # Function 2
